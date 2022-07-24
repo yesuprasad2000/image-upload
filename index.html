@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Upload-image</title>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <div class="container" id="imageBox">
+            <div id="previewtext"></div>
+            <textarea id="textbox" placeholder="ADD caption:"></textarea>
+            <input type="file" accept="images/*" name="image" id="file" style="display: none;" onchange="loadFile(event)"/>
+            <label for="file"><img src="images/upload.png" class="upload-icon"/></label>
+
+        </div>
+        <script>
+            var textbox = document.getElementById("textbox");
+            var imageBox = document.getElementById("imageBox");
+        
+            textbox.onkeyup = textbox.onkeypress = function(){
+                document.getElementById("previewtext").innerHTML = this.value;
+
+            }
+             var loadFile = function(event){
+                imageBox.style.backgroundImage = "url(" +URL.createObjectURL(event.target.files[0]) +") ";
+             }
+        </script>
+    </body>
+</html>
